@@ -1,5 +1,6 @@
 vim.opt.termguicolors = true
 vim.cmd("colorscheme codedark")
+require("conf.dashboard")
 require("conf.lualine")
 require("conf.tabline")
 require("conf.treesitter")

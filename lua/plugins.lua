@@ -17,6 +17,7 @@ return require("packer").startup(function(use)
             require("nvim-treesitter.install").update({ with_sync = true })
         end,
     })
+    use("glepnir/dashboard-nvim")
     use({
         "kyazdani42/nvim-tree.lua",
         requires = {
@@ -55,4 +56,5 @@ return require("packer").startup(function(use)
     use({ "nvim-telescope/telescope-ui-select.nvim" })
     use({ "lewis6991/gitsigns.nvim" })
     use("tpope/vim-fugitive")
+    use("stevearc/aerial.nvim")
 end)

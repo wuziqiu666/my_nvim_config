@@ -20,6 +20,7 @@ vim.fn.sign_define(
 )
 vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
 
+
 --[[
 dap.configurations.java = {
 	-- You need to extend the classPath to list your dependencies.
