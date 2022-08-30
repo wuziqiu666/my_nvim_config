@@ -1,0 +1,7 @@
+require("nvim-lsp-installer").setup({})
+require("conf.cmp")
+require("conf.autopairs")
+require("conf.formatter")
+require("lsp.java")
+require("lsp.lua")
+require("conf.dap")
