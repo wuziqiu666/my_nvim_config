@@ -48,13 +48,14 @@ return require("packer").startup(function(use)
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/vim-vsnip")
 
-    use({
-        "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
-        requires = { { "nvim-lua/plenary.nvim" } },
-    })
-    use({ "nvim-telescope/telescope-ui-select.nvim" })
-    use({ "lewis6991/gitsigns.nvim" })
-    use("tpope/vim-fugitive")
-    use("stevearc/aerial.nvim")
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
+	use({ "lewis6991/gitsigns.nvim" })
+	use("tpope/vim-fugitive")
+	use("stevearc/aerial.nvim")
+	use("numToStr/FTerm.nvim")
 end)
