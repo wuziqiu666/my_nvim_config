@@ -1,0 +1,55 @@
+vim.g.catppuccin_flavour = "mocha"
+require("catppuccin").setup({
+	transparent_background = true,
+	term_colors = true,
+	compile = {
+		enabled = false,
+		path = vim.fn.stdpath("cache") .. "/catppuccin",
+	},
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+	},
+	styles = {
+		comments = { "italic" },
+		conditionals = { "italic" },
+		loops = {},
+		functions = {},
+		keywords = {},
+		strings = {},
+		variables = {},
+		numbers = {},
+		booleans = {},
+		properties = { "italic" },
+		types = {},
+		operators = {},
+	},
+	integrations = {
+		treesitter = true,
+		telescope = true,
+		cmp = true,
+		gitsigns = true,
+		lsp_trouble = true,
+		nvimtree = true,
+		dashboard = true,
+		aerial = true,
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+		},
+	},
+	color_overrides = {},
+	highlight_overrides = {},
+})

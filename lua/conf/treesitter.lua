@@ -5,17 +5,19 @@ require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
 	},
+	--[[
+	rainbow = {
+		enable = true,
+		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+		max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		-- colors = {}, -- table of hex strings
+		-- termcolors = {} -- table of colour name strings
+	},
+--]]
 })
--- vim.opt.foldmethod     = 'expr'
--- vim.opt.foldexpr       = 'nvim_treesitter#foldexpr()'
----WORKAROUND
-vim.api.nvim_create_autocmd({ "BufEnter", "BufAdd", "BufNew", "BufNewFile", "BufWinEnter" }, {
-	group = vim.api.nvim_create_augroup("TS_FOLD_WORKAROUND", {}),
-	callback = function()
-		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-		vim.opt.foldnestmax = 0
-		vim.opt.foldminlines = 40
-	end,
-})
----ENDWORKAROUND
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldminlines = 2
+vim.opt.foldlevel = 1
+vim.opt.foldlevelstart = 99

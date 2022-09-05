@@ -1,3 +1,12 @@
+local lsp_file_path = "/Users/wuziqiu/lsp/"
+local java_debug_path = lsp_file_path .. "java-debug/"
+local java_agent_path = lsp_file_path .. "java-agent/"
+local java_test_path = lsp_file_path .. "vscode-java-test/"
+local jdtls_path = lsp_file_path .. "jdt-language-server/"
+local java8_path = "/usr/local/Cellar/openjdk@8/1.8.0+345/libexec/openjdk.jdk/Contents/Home/jre"
+local java11_path = "/usr/local/Cellar/openjdk@11/11.0.16.1/libexec/openjdk.jdk/Contents/Home"
+local java17_path = "/usr/local/Cellar/openjdk@17/17.0.4.1/libexec/openjdk.jdk/Contents/Home"
+
 function PrintDiagnostics(opts, bufnr, line_nr, client_id)
 	bufnr = bufnr or 0
 	line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
@@ -21,7 +30,7 @@ local setup = function()
 	local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 	local config = {
 		cmd = {
-			"java",
+			"/usr/local/opt/openjdk@17/bin/java",
 			"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 			"-Dosgi.bundles.defaultStartLevel=4",
 			"-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -33,12 +42,13 @@ local setup = function()
 			"java.base/java.util=ALL-UNNAMED",
 			"--add-opens",
 			"java.base/java.lang=ALL-UNNAMED",
+			"-javaagent:" .. java_agent_path .. "lombok.jar",
 			"-jar",
-			"/Users/wuziqiu/lsp/jdt-language-server/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+			vim.fn.glob(jdtls_path .. "plugins/org.eclipse.equinox.launcher_*.jar"),
 			"-configuration",
-			"/Users/wuziqiu/lsp/jdt-language-server/config_mac",
+			jdtls_path .. "config_mac",
 			"-data",
-			"/Users/wuziqiu/lsp/jdt-language-server/data",
+			jdtls_path .. "data",
 		},
 
 		root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew" }),
@@ -48,22 +58,22 @@ local setup = function()
 					runtimes = {
 						{
 							name = "JavaSE-1.8",
-							path = "/usr/local/opt/openjdk@8/",
+							path = java8_path,
 						},
 						{
 							name = "JavaSE-11",
-							path = "/usr/local/opt/openjdk@11/",
+							path = java11_path,
 						},
 						{
 							name = "JavaSE-17",
-							path = "/usr/local/opt/openjdk@17/",
+							path = java17_path,
 						},
 					},
 				},
 			},
 		},
+
 		on_attach = function(client, bufnr)
-			--[[
 			vim.api.nvim_create_autocmd("CursorHold", {
 				buffer = bufnr,
 				callback = function()
@@ -78,24 +88,18 @@ local setup = function()
 					vim.diagnostic.open_float(nil, opts)
 				end,
 			})
-            --]]
 
 			require("jdtls").setup_dap({ hotcodereplace = "auto" })
 			require("jdtls.setup").add_commands()
-			require("jdtls").setup_dap()
-			require("jdtls").test_class()
-			require("jdtls").test_nearest_method()
 		end,
 
 		capabilities = capabilities,
 	}
 
 	local bundles = {
-		vim.fn.glob(
-			"/Users/wuziqiu/lsp/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
-		),
+		vim.fn.glob(java_debug_path .. "com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"),
 	}
-	vim.list_extend(bundles, vim.split(vim.fn.glob("/Users/wuziqiu/lsp/vscode-java-test/server/*.jar"), "\n"))
+	vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "server/*.jar"), "\n"))
 	config["init_options"] = {
 		bundles = bundles,
 	}
@@ -116,9 +120,8 @@ require('lspconfig').jdtls.setup({
     use_lombok_agent = true,
     capabilities = capabilities,
 })
-
 --]]
---
+
 vim.api.nvim_create_augroup("jdtls_lsp", {
 	clear = true,
 })

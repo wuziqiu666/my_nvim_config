@@ -19,7 +19,6 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-vim.cmd([[ autocmd! CursorHold * lua PrintDiagnostics() ]])
+-- vim.cmd([[ autocmd! CursorHold * lua PrintDiagnostics() ]])
 
-vim.o.updatetime = 250
 vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false})]])

@@ -1,6 +1,6 @@
 require("plugins")
 require("colorscheme")
 require("options")
-require("language_conf")
 require("plugin_conf")
 require("keymaps")
+require("language_conf")

@@ -28,9 +28,6 @@ cmp.event:on(
             cmp.lsp.CompletionItemKind.Function,
             cmp.lsp.CompletionItemKind.Method
           },
-          ---@param char string
-          ---@param item item completion
-          ---@param bufnr buffer number
           handler = function(char, item, bufnr)
             -- Your handler function. Inpect with print(vim.inspect{char, item, bufnr})
           end

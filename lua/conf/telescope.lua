@@ -9,6 +9,7 @@ require("telescope").setup({
 				-- e.g. git_{create, delete, ...}_branch for the git_branches picker
 				["<C-h>"] = "which_key",
 			},
+			n = {},
 		},
 	},
 	pickers = {
@@ -35,3 +36,5 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("live_grep_args")
+require('telescope').load_extension('dap')

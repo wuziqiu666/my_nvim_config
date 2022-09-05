@@ -9,7 +9,9 @@ return require("packer").startup(function(use)
 	})
 	use("kdheepak/tabline.nvim")
 	--use("mhartington/oceanic-next")
-	use("tomasiser/vim-code-dark")
+	-- use("tomasiser/vim-code-dark")
+	use("folke/tokyonight.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 	use("lukas-reineke/indent-blankline.nvim")
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -28,15 +30,15 @@ return require("packer").startup(function(use)
 
 	use("onsails/lspkind.nvim")
 	use("windwp/nvim-autopairs")
-	use("luochen1990/rainbow")
-	--use("mg979/vim-visual-multi")
-	use("terryma/vim-multiple-cursors")
+	use("mg979/vim-visual-multi")
+	-- use("terryma/vim-multiple-cursors")
 
 	use("neovim/nvim-lspconfig")
 	use("mfussenegger/nvim-jdtls")
 	use("williamboman/nvim-lsp-installer")
 	use("mhartington/formatter.nvim")
 	use("mfussenegger/nvim-dap")
+	use("nanotee/sqls.nvim")
 
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("hrsh7th/cmp-buffer")
@@ -51,11 +53,20 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = {
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+			{ "nvim-telescope/telescope-dap.nvim" },
+		},
 	})
 	use({ "nvim-telescope/telescope-ui-select.nvim" })
 	use({ "lewis6991/gitsigns.nvim" })
 	use("tpope/vim-fugitive")
 	use("stevearc/aerial.nvim")
 	use("numToStr/FTerm.nvim")
+	use("tpope/vim-commentary")
+	use("tpope/vim-surround")
+	use("wfxr/minimap.vim")
+	use({ "folke/trouble.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+	use("kyazdani42/nvim-web-devicons")
 end)
