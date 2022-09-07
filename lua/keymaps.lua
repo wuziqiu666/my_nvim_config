@@ -38,7 +38,7 @@ vim.keymap.set("n", "<leader>gu", function()
 end, { silent = true, noremap = true })
 ---------------dap
 
-vim.keymap.set("n", "<C-M>", ":MinimapToggle<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "µ", ":MinimapToggle<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "÷", ":set hlsearch!<CR>", { silent = true, noremap = true })
 
 vim.keymap.set("n", "‘", ":bn<CR>", { silent = true, noremap = true })
@@ -113,7 +113,7 @@ vim.keymap.set("n", "≤", function()
 	vim.lsp.buf.hover()
 end, { noremap = true })
 vim.keymap.set("n", "<C-b>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-a>", ":AerialToggle! right<CR>", { noremap = true })
+vim.keymap.set("n", "å", ":AerialToggle! right<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-t>", '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set("t", "<C-t>", '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
