@@ -1,17 +1,19 @@
 local util = require("formatter.util")
+local format_path = vim.g["format_path"]
+local java_path = vim.g["java_path"]
 
 require("formatter").setup({
 	logging = true,
 	log_level = vim.log.levels.WARN,
 	filetype = {
-        require("formatter.filetypes.javascript")["google-java-format-1"],
+		require("formatter.filetypes.javascript")["google-java-format-1"],
 		java = {
 			function()
 				return {
-					exe = "java",
+					exe = java_path,
 					args = {
 						"-jar",
-						"/Users/wuziqiu/lsp/format/google-java-format-1.15.0-all-deps.jar",
+						vim.fn.glob(format_path .. "google-java-format-*-all-deps.jar"),
 						"--aosp",
 						util.escape_path(util.get_current_buffer_file_path()),
 					},
@@ -58,6 +60,28 @@ require("formatter").setup({
 						"--language",
 						"mysql",
 					},
+					stdin = true,
+					cwd = util.get_current_buffer_file_dir(),
+				}
+			end,
+		},
+		json = {
+			function()
+				return {
+					exe = "jq",
+					args = {
+						"--indent",
+						"4",
+					},
+					stdin = true,
+					cwd = util.get_current_buffer_file_dir(),
+				}
+			end,
+		},
+		sh = {
+			function()
+				return {
+					exe = "shfmt",
 					stdin = true,
 					cwd = util.get_current_buffer_file_dir(),
 				}

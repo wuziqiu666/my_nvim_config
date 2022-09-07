@@ -30,4 +30,10 @@ require("nvim-tree").setup({
 			resize_window = true,
 		},
 	},
+	git = {
+		enable = true,
+		ignore = false,
+		show_on_dirs = true,
+		timeout = 400,
+	},
 })

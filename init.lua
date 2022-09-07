@@ -1,3 +1,4 @@
+require("path_conf")
 require("plugins")
 require("colorscheme")
 require("options")

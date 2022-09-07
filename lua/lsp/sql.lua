@@ -1,8 +1,10 @@
+local mysql_path = vim.g["mysql_path"]
+
 require("lspconfig").sqls.setup({
 	cmd = {
 		"sqls",
 		"-config",
-		"/Users/wuziqiu/lsp/mysql/config.yml",
+		mysql_path .. "config.yml",
 	},
 	filetypes = {
 		"sql",

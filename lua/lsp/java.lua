@@ -1,11 +1,11 @@
-local lsp_file_path = "/Users/wuziqiu/lsp/"
-local java_debug_path = lsp_file_path .. "java-debug/"
-local java_agent_path = lsp_file_path .. "java-agent/"
-local java_test_path = lsp_file_path .. "vscode-java-test/"
-local jdtls_path = lsp_file_path .. "jdt-language-server/"
-local java8_path = "/usr/local/Cellar/openjdk@8/1.8.0+345/libexec/openjdk.jdk/Contents/Home/jre"
-local java11_path = "/usr/local/Cellar/openjdk@11/11.0.16.1/libexec/openjdk.jdk/Contents/Home"
-local java17_path = "/usr/local/Cellar/openjdk@17/17.0.4.1/libexec/openjdk.jdk/Contents/Home"
+local java_debug_path = vim.g["java_debug_path"]
+local java_agent_path = vim.g["java_agent_path"]
+local java_test_path = vim.g["java_test_path"]
+local jdtls_path = vim.g["jdtls_path"]
+local java8_home = vim.g["java8_home"]
+local java11_home = vim.g["java11_home"]
+local java17_home = vim.g["java17_home"]
+local java_path = vim.g["java_path"]
 
 function PrintDiagnostics(opts, bufnr, line_nr, client_id)
 	bufnr = bufnr or 0
@@ -30,7 +30,7 @@ local setup = function()
 	local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 	local config = {
 		cmd = {
-			"/usr/local/opt/openjdk@17/bin/java",
+			java_path,
 			"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 			"-Dosgi.bundles.defaultStartLevel=4",
 			"-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -58,15 +58,15 @@ local setup = function()
 					runtimes = {
 						{
 							name = "JavaSE-1.8",
-							path = java8_path,
+							path = java8_home,
 						},
 						{
 							name = "JavaSE-11",
-							path = java11_path,
+							path = java11_home,
 						},
 						{
 							name = "JavaSE-17",
-							path = java17_path,
+							path = java17_home,
 						},
 					},
 				},
