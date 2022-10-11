@@ -100,7 +100,7 @@ end, { noremap = true })
 vim.keymap.set("n", "<leader>rn", function()
 	vim.lsp.buf.rename()
 end, { noremap = true })
-vim.keymap.set("n", "<C-[>", ":bp<CR>", { noremap = true })
+-- vim.keymap.set("n", "<C-[>", ":bp<CR>", { noremap = true })
 
 -- vim.keymap.set("n", "<leader>e", function()
 -- vim.diagnostic.setloclist()

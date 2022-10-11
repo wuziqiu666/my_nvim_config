@@ -1,3 +1,4 @@
+require("conf.markdown-preview")
 require("conf.telescope")
 require("conf.tree")
 require("conf.gitsigns")

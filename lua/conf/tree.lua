@@ -4,6 +4,7 @@ require("nvim-tree").setup({
 	sync_root_with_cwd = true,
 	hijack_cursor = true,
 	reload_on_bufenter = true,
+    open_on_tab = true,
 	view = {
 		side = "left",
 		adaptive_size = false,

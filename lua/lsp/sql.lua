@@ -16,6 +16,9 @@ require("lspconfig").sqls.setup({
 	end,
 })
 
---[[
-require("lspconfig").sqlls.setup({})
---]]
+-- require("lspconfig").sqlls.setup({
+-- 	settings = {
+-- 		connections = {
+-- 		},
+-- 	},
+-- })

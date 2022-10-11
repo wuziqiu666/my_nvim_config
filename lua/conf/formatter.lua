@@ -87,6 +87,24 @@ require("formatter").setup({
 				}
 			end,
 		},
+		md = {
+			function()
+				return {
+					exe = "mdformat",
+					stdin = true,
+					cwd = util.get_current_buffer_file_dir(),
+				}
+			end,
+		},
+        python = {
+            function()
+                return {
+                    exe = "/usr/local/bin/yapf",
+                    stdin = true,
+					cwd = util.get_current_buffer_file_dir(),
+                }
+            end,
+        },
 
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
@@ -99,6 +117,7 @@ require("formatter").setup({
 vim.api.nvim_create_augroup("FormatAutogroup", {
 	clear = true,
 })
+--[[
 vim.api.nvim_create_autocmd("BufWritePost", {
 	group = "FormatAutogroup",
 	pattern = { "*" },

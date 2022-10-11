@@ -6,7 +6,10 @@ vim.o.shell = "/bin/zsh"
 vim.o.nu = true
 vim.o.rnu = true
 vim.o.scrolloff = 4
-vim.cmd("set encoding=UTF-8")
+vim.o.spell = true
+vim.o.spelloptions = "camel"
+-- vim.o.spelllang = "en_us"
+
 
 vim.api.nvim_create_augroup("setnu", {
 	clear = false,

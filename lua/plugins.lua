@@ -39,6 +39,7 @@ return require("packer").startup(function(use)
 	use("mhartington/formatter.nvim")
 	use("mfussenegger/nvim-dap")
 	use("nanotee/sqls.nvim")
+	use("mfussenegger/nvim-dap-python")
 
 	use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
 	use("hrsh7th/cmp-buffer")
@@ -47,6 +48,7 @@ return require("packer").startup(function(use)
 	use("hrsh7th/nvim-cmp")
 
 	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-vsnip")
 	use("hrsh7th/vim-vsnip")
 
@@ -69,4 +71,12 @@ return require("packer").startup(function(use)
 	use("wfxr/minimap.vim")
 	use({ "folke/trouble.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 	use("kyazdani42/nvim-web-devicons")
+	use("superhawk610/ascii-blocks.nvim")
+    use("mbbill/undotree")
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 end)

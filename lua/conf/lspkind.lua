@@ -1,5 +1,5 @@
 local cmp = require("cmp")
-require("lspkind")
+local lspkind = require("lspkind")
 
 local kind_icons = {
 	Text = "",
@@ -31,26 +31,36 @@ local kind_icons = {
 
 cmp.setup({
 
-	-- window = {
-	-- 	completion = {
-	-- 		winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-	-- 		col_offset = -3,
-	-- 		side_padding = 0,
-	-- 	},
-	-- },
 	formatting = {
-		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			-- Source
-			vim_item.menu = ({
+
+		format = lspkind.cmp_format({
+			maxwidth = 50,
+			mode = "symbol_text",
+			menu = {
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
 				nvim_lua = "[Lua]",
-				latex_symbols = "[LaTeX]",
-			})[entry.source.name]
-			return vim_item
-		end,
+				latex_symbols = "[Latex]",
+			},
+		}),
 	},
 })
+-- Source
+
+-- format = function(entry, vim_item)
+-- Kind icons
+-- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+
+-- vim_item.menu = ({
+-- 	buffer = "[Buffer]",
+-- 	nvim_lsp = "[LSP]",
+-- 	luasnip = "[LuaSnip]",
+-- 	nvim_lua = "[Lua]",
+-- 	latex_symbols = "[LaTeX]",
+-- })[entry.source.name]
+
+-- return vim_item
+-- end,
+-- },
+-- })
