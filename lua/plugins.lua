@@ -72,11 +72,12 @@ return require("packer").startup(function(use)
 	use({ "folke/trouble.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
 	use("kyazdani42/nvim-web-devicons")
 	use("superhawk610/ascii-blocks.nvim")
-    use("mbbill/undotree")
+	use("mbbill/undotree")
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 	})
+	use({ "dense-analysis/ale" })
 end)
